@@ -12,7 +12,7 @@ const Counter: React.FC<CounterProps> = () => {
    const [seconds, setSeconds] = useState(0);
 
    useEffect(() => {
-      const date = new Date("10/02/2024 19:00:00");
+      const date = new Date("07/06/2024 19:00:00");
       console.log(new Date());
 
       const interval = setInterval(() => {

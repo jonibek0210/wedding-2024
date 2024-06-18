@@ -26,7 +26,7 @@ const arr = [
    },
    {
       id: 3,
-      date: "18:00",
+      date: "19:00",
       title: "Вечер",
       img: "diyora.png",
    },

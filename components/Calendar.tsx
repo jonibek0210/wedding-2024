@@ -14,7 +14,7 @@ const Calendar: React.FC<CalendarProps> = () => {
       } else if (idx <= 29) {
          return `2.${idx.toString()[1]}`;
       } else if (idx == 30) {
-         return `0.${idx.toString()[1]}`;
+         return `3.${idx.toString()[1]}`;
       } else {
          return 0;
       }
@@ -34,7 +34,7 @@ const Calendar: React.FC<CalendarProps> = () => {
                      duration: 1,
                   }}
                >
-                  Апрель
+                  Июль
                </motion.h2>
             </div>
             <div className="px-10 mt-5">
@@ -49,7 +49,7 @@ const Calendar: React.FC<CalendarProps> = () => {
                   <li className="text-xl text-center">ВС</li>
                   {[
                      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-                     17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+                     17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
                   ].map((item: number, idx: number) => {
                      return (
                         <motion.li
@@ -63,7 +63,7 @@ const Calendar: React.FC<CalendarProps> = () => {
                            key={item}
                            className="text-base text-center relative"
                         >
-                           {idx === 13 ? (
+                           {idx === 5 ? (
                               <motion.div
                                  initial={{ opacity: 0 }}
                                  whileInView={{ opacity: 1 }}

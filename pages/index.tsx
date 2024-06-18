@@ -42,7 +42,7 @@ export default function Home() {
          ) : (
             <>
                <Head>
-                  <title>Жаляп & Севинчхон</title>
+                  <title>Улугбек & Севинчхон</title>
                   <link
                      rel="icon"
                      type="image/x-icon"
@@ -320,7 +320,7 @@ export default function Home() {
                                  duration: 1,
                               }}
                            >
-                              Жаляп
+                              Улугбек
                               <br />
                               <span className="font-[Jony]">&</span>
                               <br />
