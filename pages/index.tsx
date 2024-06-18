@@ -42,7 +42,7 @@ export default function Home() {
          ) : (
             <>
                <Head>
-                  <title>Jalap & Sevinchxon</title>
+                  <title>Жаляп & Севинчхон</title>
                   <link
                      rel="icon"
                      type="image/x-icon"
@@ -250,11 +250,43 @@ export default function Home() {
                               </motion.p>
                            </div>
                         </div>
+                        <div className="flex justify-center mt-5">
+                           <AiOutlineHeart size={40} color={"gray"} />
+                        </div>
+
+                        <motion.h2
+                           className="text-5xl font-[champignon] font-normal leading-[0.8] text-center mt-5"
+                           initial={{ scale: 0.9, opacity: 0 }}
+                           whileInView={{ scale: 1, opacity: 1 }}
+                           transition={{
+                              delay: 0,
+                              ease: "easeOut",
+                              duration: 1,
+                           }}
+                        >
+                           Поздравления принимаем на карту тоже
+                        </motion.h2>
+                        <motion.p
+                           initial={{ scale: 0.8, opacity: 0 }}
+                           whileInView={{ scale: 1, opacity: 1 }}
+                           transition={{
+                              delay: 0,
+                              ease: "easeOut",
+                              duration: 1,
+                           }}
+                           className="text-[20px] leading-[31px] text-center mt-5"
+                        >
+                           Карта: 8600312912413784
+                        </motion.p>
                      </div>
                   </section>
 
                   <section className="bg-[#ececec] overflow-hidden mt-5">
                      <Counter />
+                  </section>
+
+                  <section>
+                     <Form />
                   </section>
 
                   <section>
@@ -288,11 +320,11 @@ export default function Home() {
                                  duration: 1,
                               }}
                            >
-                              Jalap
+                              Жаляп
                               <br />
                               <span className="font-[Jony]">&</span>
                               <br />
-                              Sevinchxon
+                              Севинчхон
                            </motion.h2>
                         </div>
                      </div>

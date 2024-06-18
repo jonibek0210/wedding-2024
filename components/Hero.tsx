@@ -55,11 +55,11 @@ const Hero: React.FC<HeroProps> = () => {
                transition={{ delay: 0.6, ease: "easeOut", duration: 1.5 }}
                className=""
             >
-               <h1 className="text-[48px] leading-10">Jalap</h1>
+               <h1 className="text-[48px] leading-10">Жаляп</h1>
                <h2 className="text-7xl font-[champignon] font-normal leading-[0.8] ">
                   and
                </h2>
-               <h1 className="text-[48px] leading-8">Sevinchxon</h1>
+               <h1 className="text-[48px] leading-8">Севинчхон</h1>
             </motion.div>
          </div>
       </div>

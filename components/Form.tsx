@@ -9,33 +9,21 @@ import { GoPaperAirplane } from "react-icons/go";
 import ButtonSend from "./children/ButtonSend";
 import moment from "moment";
 
-interface FormProps {}
+interface FormProps { }
 
 type Inputs = {
    guest: string;
-   attendance: string;
    drink: string;
-   date: string;
 };
 
 const Form: React.FC<FormProps> = () => {
    const {
       register,
       handleSubmit,
-      formState: { errors, isSubmitting, isDirty, isValid },
+      formState: { errors },
       reset,
    } = useForm<Inputs>();
 
-   const attendance = [
-      {
-         id: 0,
-         attendance: "Я с удовольствием приду",
-      },
-      {
-         id: 1,
-         attendance: "К сожалению, не смогу присутствовать",
-      },
-   ];
    const drinks = [
       {
          id: 0,
@@ -72,19 +60,18 @@ const Form: React.FC<FormProps> = () => {
 
    const onSubmit: SubmitHandler<Inputs> = (data: any) => {
       setActive(true);
-      const dateTime = moment().format("YY.MM.DD-HH:mm");
       setIsSubmitSuccessful(!isSubmitSuccessful);
+
+      let OBJ = `Имя и фамилия: ${data.guest} \n`;
+      OBJ += `Напиток: ${data.drink} \n`;
 
       axios
          .post(
-            "https://sheet.best/api/sheets/9b0d2b05-7007-42b3-a5a8-d1b8db75e3fd",
-            { ...data, date: dateTime },
-            {
-               headers: {
-                  "Content-Type": "application/json",
-               },
-            }
-         )
+            `https://api.telegram.org/bot7492479981:AAEN1SXoY0e1JzkyiiB1jQaHD0S0xPBXHag/sendMessage`, {
+            chat_id: -1002220504402,
+            parse_mode: "html",
+            text: OBJ,
+         })
          .then((res) => {
             if (res.status === 200 || res.status === 201) {
                console.log(res.data);
@@ -95,11 +82,13 @@ const Form: React.FC<FormProps> = () => {
          });
    };
 
+   // 1024211914
+   // 7492479981:AAEN1SXoY0e1JzkyiiB1jQaHD0S0xPBXHag
+
    useEffect(() => {
       reset({
          guest: "",
          drink: "",
-         attendance: "",
       });
    }, [isSubmitSuccessful]);
 
@@ -150,63 +139,6 @@ const Form: React.FC<FormProps> = () => {
                   </p>
                )}
             </motion.div>
-            <div className="">
-               <motion.div
-                  initial={{ x: -40, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{
-                     delay: 0,
-                     ease: "easeOut",
-                     duration: 0.5,
-                  }}
-                  className=""
-               >
-                  <h2 className="text-[18px] mb-2 mt-7">
-                     Сможете ли присутствовать на нашем торжестве?
-                  </h2>
-               </motion.div>
-               <div className="relative">
-                  <ul className="flex flex-col gap-2">
-                     {attendance.map(
-                        (item: { id: number; attendance: string }) => {
-                           return (
-                              <motion.li
-                                 key={item.id}
-                                 initial={{ x: -40, opacity: 0 }}
-                                 whileInView={{ x: 0, opacity: 1 }}
-                                 transition={{
-                                    delay: +`0.${item.id}`,
-                                    ease: "easeOut",
-                                    duration: 0.5,
-                                 }}
-                                 className=""
-                              >
-                                 <label className="flex items-center gap-4 cursor-pointer">
-                                    <input
-                                       {...register("attendance", {
-                                          required: true,
-                                       })}
-                                       className="radio cursor-pointer"
-                                       name="attendance"
-                                       type="radio"
-                                       value={item.attendance}
-                                    />
-                                    <span className="text-sm">
-                                       {item.attendance}
-                                    </span>
-                                 </label>
-                              </motion.li>
-                           );
-                        }
-                     )}
-                  </ul>
-                  {errors.attendance && (
-                     <p className="absolute -bottom-4 left-0 flex items-center text-[10px] text-[#ff0000a5]">
-                        Сможете ли присутствовать <TiArrowUp />
-                     </p>
-                  )}
-               </div>
-            </div>
             <div className="">
                <motion.div
                   initial={{ x: -40, opacity: 0 }}
