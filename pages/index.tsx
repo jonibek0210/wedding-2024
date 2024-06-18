@@ -320,11 +320,11 @@ export default function Home() {
                                  duration: 1,
                               }}
                            >
-                              Улугбек
+                              Ulugbek
                               <br />
                               <span className="font-[Jony]">&</span>
                               <br />
-                              Севинчхон
+                              Sevinchxon
                            </motion.h2>
                         </div>
                      </div>

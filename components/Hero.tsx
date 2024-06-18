@@ -47,24 +47,19 @@ const Hero: React.FC<HeroProps> = () => {
                initial={{ x: -50, opacity: 0 }}
                whileInView={{ x: 0, opacity: 1 }}
                transition={{ delay: 0.4, ease: "easeOut", duration: 1.5 }}
-               className="w-[1px] h-96 absolute left-5 -bottom-8 bg-black"
+               className="w-[1px] h-72 absolute left-5 -bottom-8 bg-black"
             ></motion.div>
-            <motion.h2
-               className="text-7xl font-[champignon] font-normal leading-[1] mt-5 ml-3"
-               initial={{ scale: 0.9, opacity: 0 }}
-               whileInView={{ scale: 1, opacity: 1 }}
-               transition={{
-                  delay: 0,
-                  ease: "easeOut",
-                  duration: 1,
-               }}
+            <motion.div
+               initial={{ x: 50, opacity: 0 }}
+               whileInView={{ x: 0, opacity: 1 }}
+               transition={{ delay: 0.6, ease: "easeOut", duration: 1.5 }}
             >
-               Улугбек
-               <br />
-               and
-               <br />
-               Севинчхон
-            </motion.h2>
+               <h1 className="text-5xl leading-10">Ulugbek</h1>
+               <h2 className="text-7xl font-[champignon] font-normal leading-[0.8] ">
+                  and
+               </h2>
+               <h1 className="text-5xl leading-8">Sevinchxon</h1>
+            </motion.div>
          </div>
       </div>
    );
