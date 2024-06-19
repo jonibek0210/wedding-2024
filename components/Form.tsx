@@ -14,6 +14,7 @@ interface FormProps { }
 type Inputs = {
    guest: string;
    drink: string;
+   attendance: string
 };
 
 const Form: React.FC<FormProps> = () => {
@@ -23,7 +24,16 @@ const Form: React.FC<FormProps> = () => {
       formState: { errors },
       reset,
    } = useForm<Inputs>();
-
+   const attendance = [
+      {
+         id: 0,
+         attendance: "Я с удовольствием приду",
+      },
+      {
+         id: 1,
+         attendance: "К сожалению, не смогу присутствовать",
+      },
+   ];
    const drinks = [
       {
          id: 0,
@@ -62,8 +72,9 @@ const Form: React.FC<FormProps> = () => {
       setActive(true);
       setIsSubmitSuccessful(!isSubmitSuccessful);
 
-      let OBJ = `Имя и фамилия: ${data.guest} \n`;
-      OBJ += `Напиток: ${data.drink} \n`;
+      let OBJ = `Name: ${data.guest} \n`;
+      OBJ += `Drink: ${data.drink} \n`;
+      OBJ += `Attendance: ${data.attendance} \n`;
 
       axios
          .post(
@@ -89,6 +100,7 @@ const Form: React.FC<FormProps> = () => {
       reset({
          guest: "",
          drink: "",
+         attendance: ""
       });
    }, [isSubmitSuccessful]);
 
@@ -139,6 +151,63 @@ const Form: React.FC<FormProps> = () => {
                   </p>
                )}
             </motion.div>
+            <div className="">
+               <motion.div
+                  initial={{ x: -40, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                     delay: 0,
+                     ease: "easeOut",
+                     duration: 0.5,
+                  }}
+                  className=""
+               >
+                  <h2 className="text-[18px] mb-2 mt-7">
+                     Сможете ли присутствовать на нашем торжестве?
+                  </h2>
+               </motion.div>
+               <div className="relative">
+                  <ul className="flex flex-col gap-2">
+                     {attendance.map(
+                        (item: { id: number; attendance: string }) => {
+                           return (
+                              <motion.li
+                                 key={item.id}
+                                 initial={{ x: -40, opacity: 0 }}
+                                 whileInView={{ x: 0, opacity: 1 }}
+                                 transition={{
+                                    delay: +`0.${item.id}`,
+                                    ease: "easeOut",
+                                    duration: 0.5,
+                                 }}
+                                 className=""
+                              >
+                                 <label className="flex items-center gap-4 cursor-pointer">
+                                    <input
+                                       {...register("attendance", {
+                                          required: true,
+                                       })}
+                                       className="radio cursor-pointer"
+                                       name="attendance"
+                                       type="radio"
+                                       value={item.attendance}
+                                    />
+                                    <span className="text-sm">
+                                       {item.attendance}
+                                    </span>
+                                 </label>
+                              </motion.li>
+                           );
+                        }
+                     )}
+                  </ul>
+                  {errors.attendance && (
+                     <p className="absolute -bottom-4 left-0 flex items-center text-[10px] text-[#ff0000a5]">
+                        Сможете ли присутствовать <TiArrowUp />
+                     </p>
+                  )}
+               </div>
+            </div>
             <div className="">
                <motion.div
                   initial={{ x: -40, opacity: 0 }}

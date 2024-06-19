@@ -112,7 +112,7 @@ export default function Home() {
                               }}
                               className="text-center mt-5"
                            >
-                              14 04 2024 года
+                              06 07 2024 года
                            </motion.p>
                         </div>
                         <motion.div
